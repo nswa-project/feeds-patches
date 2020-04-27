@@ -1,0 +1,13 @@
+diff --git a/feeds/packages/net/mwan3/files/lib/mwan3/mwan3.sh b/feeds/packages/net/mwan3/files/lib/mwan3/mwan3.sh
+index ae7b398a..c17f2fe7 100644
+--- a/feeds/packages/net/mwan3/files/lib/mwan3/mwan3.sh
++++ b/feeds/packages/net/mwan3/files/lib/mwan3/mwan3.sh
+@@ -4,7 +4,7 @@ IP4="ip -4"
+ IP6="ip -6"
+ IPS="ipset"
+ IPT4="iptables -t mangle -w"
+-IPT6="ip6tables -t mangle -w"
++IPT6="/bin/true"
+ LOG="logger -t mwan3[$$] -p"
+ CONNTRACK_FILE="/proc/net/nf_conntrack"
+ IPv6_REGEX="([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|"

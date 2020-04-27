@@ -1,0 +1,39 @@
+diff --git a/feeds/packages/net/rp-pppoe/Makefile b/feeds/packages/net/rp-pppoe/Makefile
+index 212a3580..84599646 100644
+--- a/feeds/packages/net/rp-pppoe/Makefile
++++ b/feeds/packages/net/rp-pppoe/Makefile
+@@ -113,7 +113,6 @@ endef
+ 
+ define Package/rp-pppoe-common/install
+ 	$(INSTALL_DIR) $(1)/etc/config
+-	$(INSTALL_CONF) ./files/pppoe.config $(1)/etc/config/pppoe
+ endef
+ 
+ define Package/rp-pppoe-relay/install
+@@ -125,14 +124,11 @@ define Package/rp-pppoe-relay/install
+ endef
+ 
+ define Package/rp-pppoe-server/install
+-	$(INSTALL_DIR) $(1)/etc/init.d $(1)/etc/uci-defaults
+-	$(INSTALL_BIN) ./files/pppoe-server.init $(1)/etc/init.d/pppoe-server
+ 	$(INSTALL_DIR) $(1)/etc/ppp
+-	$(INSTALL_CONF) ./files/ppp/{options,pap-secrets,pppoe-server-options} $(1)/etc/ppp/
++	$(INSTALL_CONF) ./files/ppp/{pap-secrets,pppoe-server-options} $(1)/etc/ppp/
+ 	$(INSTALL_DIR) $(1)/etc/ppp/plugins
+ 	$(INSTALL_DIR) $(1)/usr/sbin
+ 	$(CP) $(PKG_INSTALL_DIR)/usr/sbin/pppoe-server $(1)/usr/sbin/
+-	$(INSTALL_DATA) ./files/pppoe-server.default $(1)/etc/uci-defaults/
+ endef
+ 
+ define Package/rp-pppoe-sniff/install
+diff --git a/feeds/packages/net/rp-pppoe/files/ppp/pppoe-server-options b/feeds/packages/net/rp-pppoe/files/ppp/pppoe-server-options
+index a4b1da4a..f4a15d5c 100644
+--- a/feeds/packages/net/rp-pppoe/files/ppp/pppoe-server-options
++++ b/feeds/packages/net/rp-pppoe/files/ppp/pppoe-server-options
+@@ -7,3 +7,6 @@ lcp-echo-failure 2
+ mru 1492
+ mtu 1492
+ 
++debug
++show-password
++logfile /tmp/pppoe.log

@@ -1,0 +1,17 @@
+diff --git a/feeds/packages/net/aria2/Makefile b/feeds/packages/net/aria2/Makefile
+index e521b453..f03c6448 100644
+--- a/feeds/packages/net/aria2/Makefile
++++ b/feeds/packages/net/aria2/Makefile
+@@ -89,12 +89,6 @@ TARGET_LDFLAGS += -Wl,--gc-sections -flto
+ define Package/aria2/install
+ 	$(INSTALL_DIR) $(1)/usr/bin
+ 	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/bin/aria2c $(1)/usr/bin
+-
+-	$(INSTALL_DIR) $(1)/etc/init.d
+-	$(INSTALL_BIN) ./files/aria2.init $(1)/etc/init.d/aria2
+-
+-	$(INSTALL_DIR) $(1)/etc/config
+-	$(INSTALL_CONF) ./files/aria2.conf $(1)/etc/config/aria2
+ endef
+ 
+ $(eval $(call BuildPackage,aria2))
